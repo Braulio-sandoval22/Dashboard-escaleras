@@ -13,23 +13,22 @@
 </head>
 
 <body>
-
+    <h1 id="titulo">Titulo XYZ</h1>
     <div id="grid">
         <!--
          Primera parte, DIV 1
          Total de uso de la escalera y promedio de uso
         -->
         <div id="div1">
-            <?php include 'consulta.php'; ?>
             <div class="estadisticas-container">
                 <div class="estadistica">
                     <h2>Uso total hasta ahora de la escalera:</h2>
-                    <p class="valor-grande" id="totalSuma"><?= number_format($total, 0, ',', '.') ?></p>
+                    <p class="valor-grande" id="totalSuma">X</p>
                     <small>Suma de Uso</small>
                 </div>
                 <div class="estadistica">
                     <h2>Promedio de pasos de los<br>usuarios por día:</h2>
-                    <p class="valor-grande" id="promedio"><?= number_format($promedio, 2, ',', '.') ?></p>
+                    <p class="valor-grande" id="promedio">X</p>
                     <small>Promedio de Uso</small>
                 </div>
             </div>
@@ -66,7 +65,7 @@
                     ?>
                 </tbody>
             </table>
-        </div>
+        </div> 
          <!--
          tercera parte, DIV 2
          Graficos del uso de las escaleras
