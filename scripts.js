@@ -1,7 +1,7 @@
 const ctxBar = document.getElementById('barChart').getContext('2d');
 const ctxLine = document.getElementById('lineChart').getContext('2d');
-const totalSuma = document.getElementById('.totalSuma');
-const promedio = document.querySelector('.promedio');
+const totalSuma = document.getElementById('totalSuma');
+const promedio = document.getElementById('promedio');
 
 
 const barChart = new Chart(ctxBar, {
@@ -72,43 +72,35 @@ function actualizarBarrasConFiltro() {
 function ActualizarDatosTotales(selectBarra){
     const tipo = $('#filtro-tipo').val();
     let url = 'test.php?tipo=' + tipo;
-    
+    $('#loader').show();
     if (tipo === 'año') {
-        console.log(selectBarra);  
-        url += '&mes=' + selectBarra;
+        url += '&año=' + $('#filtro-año').val() + '&mes=' + selectBarra;
+        console.log(url);
     } else if (tipo === 'mes') {
+        url += '&mes=' + $('#filtro-mes').val()+ '&semana=' + selectBarra;;
         console.log(selectBarra);
     } else if (tipo === 'semana') {
+        url += '&dia=' + selectBarra;
         console.log(selectBarra);
     } else if (tipo === 'dia') {
         console.log(selectBarra);
     }
     
     $.getJSON(url, function(response) {
-        
-        totalSuma.textContent($response);
+        $('#loader').hide();
+        console.log(response);
+
+        totalSuma.textContent = response.total.toLocaleString('es-CL');
+        promedio.textContent = response.promedio.toLocaleString('es-CL', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });;
+
+        lineChart.data.labels = response.labels;
+        lineChart.data.datasets[0].data = response.data;
+        lineChart.update();
 
     });
-    // $.getJSON('actualizarDatos.php?tipo=' + tipo, function(response) {
-
-    //     if (tipo === 'año') {
-    //         url += '&mes=' + selectBarra;
-    //         // url += '&año=' + $('#filtro-año').val();
-    //     } else if (tipo === 'mes') {
-    //         url += '&mes=' + $('#filtro-mes').val();
-    //     } else if (tipo === 'semana') {
-    //         url += '&semana=' + $('#filtro-semana').val();
-    //     } else if (tipo === 'dia') {
-    //         url += '&fecha=' + $('#filtro-dia').val();
-    //     }
-
-
-    //     $('#loader').hide();
-
-    //     totalSuma.textContent($result);
-
-
-    // });
 
 }
 
