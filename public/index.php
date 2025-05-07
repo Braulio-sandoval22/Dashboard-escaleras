@@ -23,12 +23,12 @@
             <div class="estadisticas-container">
                 <div class="estadistica">
                     <h2>Uso total hasta ahora de la escalera:</h2>
-                    <p class="valor-grande" id="totalSuma">X</p>
+                    <p class="valor-grande" id="totalSuma"></p>
                     <small>Suma de Uso</small>
                 </div>
                 <div class="estadistica">
                     <h2>Promedio de pasos de los<br>usuarios por día:</h2>
-                    <p class="valor-grande" id="promedio">X</p>
+                    <p class="valor-grande" id="promedio"></p>
                     <small>Promedio de Uso</small>
                 </div>
             </div>
@@ -48,21 +48,8 @@
                         <th>Estado</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                        require_once '../app/config/conexion.php';
-                        $query = "SELECT * FROM sensores";
-                        $result = $conn->query($query);
-
-                        while ($row = $result->fetch_assoc()) {
-                        $colorClass = $row['estado'] ? 'activo' : 'inactivo';
-                        $estadoTexto = $row['estado'] ? 'Activo' : 'Inactivo';
-                        echo "<tr>";
-                        echo "<td>{$row['nombre']}</td>";
-                        echo "<td><div class='estado'><span class='dot $colorClass'></span> $estadoTexto</div></td>";
-                        echo "</tr>";
-                        }
-                    ?>
+                <tbody id="tabla-sensores">
+                    <!-- Aquí se insertarán las filas dinámicamente con JavaScript -->
                 </tbody>
             </table>
         </div> 
@@ -75,7 +62,6 @@
 
             <div class="filtros">
                 <select id="filtro-tipo" onchange="cambiarFiltrosVisibles()">
-                    <option value="">Filtrar</option>
                     <option value="año">Por Año</option>
                     <option value="mes">Por Mes</option>
                     <option value="semana">Por Semana</option>
