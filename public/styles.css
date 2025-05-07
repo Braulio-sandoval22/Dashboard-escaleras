@@ -65,14 +65,17 @@ th {
 #loader { display: none; text-align: center; margin: 10px; }
 
 .chart-container { 
-    width: 50%; 
-    max-width: 800px; 
+    width: 90%; 
+    max-width: 700px; 
     margin: auto; 
     background-color: white; 
     -webkit-box-shadow: 6px 7px 30px 0px rgba(0,0,0,0.4);
     -moz-box-shadow: 6px 7px 30px 0px rgba(0,0,0,0.4);
     box-shadow: 6px 7px 30px 0px rgba(0,0,0,0.4);
+    cursor: pointer;
 }
+
+
 .filtros { margin-bottom: 20px; text-align: center; }
 .filtros select, .filtros input { margin: 5px; padding: 5px; }
 
@@ -93,4 +96,17 @@ th {
     font-weight: bold;
     color: #007bff;
     margin: 10px 0;
+}
+
+/* Estilo para pantallas pequeñas (como móviles) */
+@media (max-width: 768px) {
+	#grid {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto;
+	}
+
+	#div1, #div2, #div3 {
+		grid-area: auto;
+        margin-top: 50px;
+	}
 }

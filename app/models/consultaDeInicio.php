@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    require_once '../config/conexion.php';
     
     $año = intval($_GET['año']);
     $sql = "SELECT MONTH(Fecha_Hora) as mes, SUM(Uso) as total

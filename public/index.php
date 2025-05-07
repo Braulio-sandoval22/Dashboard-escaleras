@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        include('conexion.php');
+                        require_once '../app/config/conexion.php';
                         $query = "SELECT * FROM sensores";
                         $result = $conn->query($query);
 

@@ -16,8 +16,8 @@ const barChart = new Chart(ctxBar, {
     },
     options: {
         onClick: (evt, item) => {
-
-            if (item.length > 0) {
+            const tipo = $('#filtro-tipo').val();
+            if (item.length > 0 && tipo != 'dia') {
                 const selectBarra = barChart.data.labels[item[0].index];
                 ActualizarDatosTotales(selectBarra);
             }
@@ -41,7 +41,7 @@ const lineChart = new Chart(ctxLine, {
 
 function actualizarBarrasConFiltro() {
     const tipo = $('#filtro-tipo').val();
-    let url = 'consultar_filtro.php?tipo=' + tipo;
+    let url = '../app/controllers/consulta_filtro_controller.php?tipo=' + tipo;
 
     if (tipo === 'año') {
         url += '&año=' + $('#filtro-año').val();
@@ -80,7 +80,7 @@ function actualizarBarrasConFiltro() {
 
 function ActualizarDatosTotales(selectBarra){
     const tipo = $('#filtro-tipo').val();
-    let url = 'test.php?tipo=' + tipo;
+    let url = '../app/controllers/consulta_click_controller.php?tipo=' + tipo;
     $('#loader').show();
     if (tipo === 'año') {
         url += '&año=' + $('#filtro-año').val() + '&mes=' + selectBarra;
@@ -110,7 +110,6 @@ function ActualizarDatosTotales(selectBarra){
     });
 
 }
-
 
 $(document).ready(function () {
     const añoActual = new Date().getFullYear();
@@ -145,7 +144,7 @@ function borrarFiltros() {
     $('#loader').show();
     titulo.textContent = "Datos del año: " + añoActual;
     console.log(añoActual);
-    $.getJSON('consultaDeInicio.php?tipo=año&año=' + añoActual, function(response) {
+    $.getJSON('../app/models/consultaDeInicio.php?tipo=año&año=' + añoActual, function(response) {
         $('#loader').hide();
         console.log(response);
 
