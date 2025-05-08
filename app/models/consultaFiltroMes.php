@@ -15,7 +15,7 @@ class consultaFiltroMes {
         // Obtener último día del mes
         $fechaFin = date("Y-m-t 23:59:59", strtotime($fechaInicio));
 
-        // Consulta SQL para agrupar por semana del mes (semanas 1, 2, 3, 4)
+        // Consulta SQL para agrupar por semana del mes (semanas 1, 2, 3, 4) y obtener el total 
         $sql = "SELECT 
                     FLOOR((DAY(Fecha_Hora) - 1) / 7) + 1 AS semana_del_mes, 
                     SUM(Uso) as total

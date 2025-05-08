@@ -8,6 +8,7 @@ class consultaFiltroAño {
 
     public function obtenerDatosPorAño($año) {
         $response = ['total' => [], 'promedio' => [],'labels' => [], 'data' => []];
+        // Obtenemos total de uso por mes
         $sql = "SELECT MONTH(Fecha_Hora) as mes, SUM(Uso) as total
                 FROM uso_escalera
                 WHERE YEAR(Fecha_Hora) = ?

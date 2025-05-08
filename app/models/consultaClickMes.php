@@ -18,7 +18,7 @@ class consultaClickMes {
         $fechaInicio = date($mesSeleccionado . '-01 00:00:00');
         // Obtener último día del mes
         $fechaFin = date("Y-m-t 23:59:59", strtotime($fechaInicio));
-        
+        // obtener total uso y promedio
         $sql =  "SELECT semana_del_mes AS semana, total, promedio
                     FROM (
                         SELECT 
@@ -36,7 +36,7 @@ class consultaClickMes {
         $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$numSemana);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        // obtenemos uso total por hora
         $sqlHora  = "SELECT semana_del_mes, hora, total
                     FROM (
                         SELECT 

@@ -8,8 +8,8 @@ class consultaClickSemana {
 
     public function obtenerDatosPorSemana($dia) {
         $response = ['total' => [], 'promedio' => [],'labels' => [], 'data' => []];
-        $horas = array_fill(0, 24, 0);
-        
+        $horas = array_fill(0, 24, 0); // Inicializa las 24 horas
+        // Obtenemos el total de uso y el promedio
         $sql = "SELECT SUM(Uso) as total, AVG(Uso) as promedio
                 FROM uso_escalera
                 WHERE DATE(Fecha_Hora) =?";
@@ -17,7 +17,7 @@ class consultaClickSemana {
         $stmt->bind_param("s", $dia);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+        // Obtenemos el total de uso por hora
         $sqlHora = "SELECT HOUR(Fecha_Hora) as hora, SUM(Uso) as total
                     FROM uso_escalera
                     WHERE DATE(Fecha_Hora) =?

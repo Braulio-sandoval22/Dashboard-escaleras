@@ -51,7 +51,6 @@ class consultaFiltroSemana {
         $stmtHora->execute();
         $resultHora = $stmtHora->get_result();
         //guardado de los datos
-
         while ($row = $result->fetch_assoc()) {
             $response['labels'][] = $row['dia'];
             $response['data'][] = intval($row['total']);

@@ -8,7 +8,7 @@ class consultaFiltroDia {
 
     public function obtenerDatosPorDia($fecha) {
         $response = ['total' => [], 'promedio' => [],'labels' => [], 'data' => [],'labelsLine' => [], 'dataLine' => []];
-
+        // Obtenemos total de uso y el promedio
         $sql = "SELECT DATE(Fecha_Hora) as dia,SUM(Uso) as total, AVG(Uso) as promedio
                 FROM uso_escalera
                 WHERE DATE(Fecha_Hora) =?";

@@ -74,9 +74,10 @@ th {
     cursor: pointer;
 }
 
-
 .filtros { margin-bottom: 20px; text-align: center; }
 .filtros select, .filtros input { margin: 5px; padding: 5px; }
+h2, h1{ color: #003366;}
+.estadistica {margin-bottom: 5px;}
 
 .estadisticas-container {
     background-color: #e2effa;
@@ -84,14 +85,6 @@ th {
     font-family: Arial, sans-serif;
     color: #003366;
     text-align: center;
-}
-
-h2, h1{
-    color: #003366;
-}
-
-.estadistica {
-    margin-bottom: 5px;
 }
 
 .valor-grande {
@@ -107,7 +100,7 @@ h2, h1{
     color: #007bff;
 }
 
-/* Estilo para pantallas pequeñas (como móviles) */
+/* Cambio del grid segun tamaño de la pantalla */
 @media (max-width: 768px) {
 	#grid {
 		grid-template-columns: 1fr;

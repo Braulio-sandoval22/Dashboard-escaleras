@@ -48,8 +48,7 @@ class consultaClickAño {
                 $numMes = 12;
                 break;
         }
-
-        
+        //Query para obtener total uso y el promedio de uso
         $sql = "SELECT MONTH(Fecha_Hora) as mes, SUM(Uso) as total, AVG(Uso) as promedio
                 FROM uso_escalera
                 WHERE YEAR(Fecha_Hora) = ? and MONTH(Fecha_Hora) = ?
@@ -58,7 +57,7 @@ class consultaClickAño {
         $stmt->bind_param("ii", $año,$numMes);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+        //Query para obtener total de uso por hora
         $sqlHora  = "SELECT HOUR(Fecha_Hora) AS hora, SUM(Uso) AS total
                 FROM uso_escalera
                 WHERE YEAR(Fecha_Hora) = ? AND MONTH(Fecha_Hora) = ?
